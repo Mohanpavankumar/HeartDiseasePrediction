@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction</title>
+    <style>
+        /* General styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-image: url('/static/HealthCare.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+    padding: 20px;
+}
+
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+h3 {
+    text-align: center;
+    margin-top: 30px;
+    color: black;
+}
+
+/* Form container */
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+}
+
+form label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+    color: #555;
+}
+
+form input[type="number"],
+form select,
+form input[type="radio"] {
+    width: calc(100% - 10px);
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form input[type="radio"] {
+    width: auto;
+    margin-right: 5px;
+}
+
+button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Result display */
+#svm_result,
+#dt_result,
+#lr_result,
+#rf_result,
+#knn_result,
+#overall_probability {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-top: 10px;
+    color: #333;
+}
+
+    </style>
+</head>
+<body>
+    <h2>Heart Disease Prediction</h2>
+
+    <form id="prediction-form">
+        <!-- Age -->
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required><br><br>
+
+        <!-- Sex -->
+        <label for="sex">Sex:</label>
+        <input type="radio" id="male" name="sex" value="1" required> Male
+        <input type="radio" id="female" name="sex" value="0"> Female<br><br>
+
+        <!-- Chest Pain Type -->
+        <label for="cp">Chest Pain Type:</label>
+        <select id="cp" name="cp" required>
+            <option value="0">Typical Angina</option>
+            <option value="1">Atypical Angina</option>
+            <option value="2">Non-anginal Pain</option>
+            <option value="3">Asymptomatic</option>
+        </select><br><br>
+
+        <!-- Resting Blood Pressure -->
+        <label for="trestbps">Resting Blood Pressure (mm Hg):</label>
+        <input type="number" id="trestbps" name="trestbps" required><br><br>
+
+        <!-- Serum Cholesterol -->
+        <label for="chol">Serum Cholesterol (mg/dl):</label>
+        <input type="number" id="chol" name="chol" required><br><br>
+
+        <!-- Fasting Blood Sugar -->
+        <label for="fbs">Fasting Blood Sugar > 120 mg/dl:</label>
+        <input type="radio" id="fbs_yes" name="fbs" value="1" required> Yes
+        <input type="radio" id="fbs_no" name="fbs" value="0"> No<br><br>
+
+        <!-- Resting Electrocardiographic Result -->
+        <label for="restecg">Resting Electrocardiographic Result:</label>
+        <select id="restecg" name="restecg" required>
+            <option value="0">Normal</option>
+            <option value="1">ST-T wave abnormality</option>
+            <option value="2">Left ventricular hypertrophy</option>
+        </select><br><br>
+
+        <!-- Maximum Heart Rate Achieved -->
+        <label for="thalach">Maximum Heart Rate Achieved:</label>
+        <input type="number" id="thalach" name="thalach" required><br><br>
+
+        <!-- Exercise Induced Angina -->
+        <label for="exang">Exercise Induced Angina:</label>
+        <input type="radio" id="exang_yes" name="exang" value="1" required> Yes
+        <input type="radio" id="exang_no" name="exang" value="0"> No<br><br>
+
+        <!-- Oldpeak -->
+        <label for="oldpeak">Oldpeak (ST depression):</label>
+        <input type="number" id="oldpeak" name="oldpeak" required><br><br>
+
+        <!-- Slope of Peak Exercise ST Segment -->
+        <label for="slope">Slope of Peak Exercise ST Segment:</label>
+        <select id="slope" name="slope" required>
+            <option value="0">Upsloping</option>
+            <option value="1">Flat</option>
+            <option value="2">Downsloping</option>
+        </select><br><br>
+
+        <!-- Number of Major Vessels Colored by Fluoroscopy -->
+        <label for="ca">Number of Major Vessels Colored by Fluoroscopy:</label>
+        <select id="ca" name="ca" required>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select><br><br>
+
+        <!-- Thalassemia -->
+        <label for="thal">Thalassemia:</label>
+        <select id="thal" name="thal" required>
+            <option value="3">Normal</option>
+            <option value="6">Fixed Defect</option>
+            <option value="7">Reversible Defect</option>
+        </select><br><br>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    <h3>Predictions:</h3>
+    <p id="svm_result"></p>
+    <p id="dt_result"></p>
+    <p id="lr_result"></p>
+    <p id="rf_result"></p>
+    <p id="knn_result"></p>
+    <p id="fnn_result"></p>
+    <p id="mlp_result"></p>
+    <p id="dnn_result"></p>
+    <p id="overall_probability"></p>
+		<!--		document.getElementById('fnn_result').textContent = `Feed Forward Neural Network Prediction: ${result.fnn_pred}`;
+				document.getElementById('mlp_result').textContent = `Multilater Percepron Prediction: ${result.mlp_pred}`;
+				document.getElementById('dnn_result').textContent = `Deep Neural Network Prediction: ${result.dnn_pred}`; -->
+
+    <script>
+        document.getElementById('prediction-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Get form data
+            const formData = new FormData(event.target);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+
+            // Send POST request to Flask API
+            fetch('http://127.0.0.1:5000/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                // Display predictions
+                document.getElementById('svm_result').textContent = `SVM Prediction: ${result.svm_prediction}`;
+                document.getElementById('dt_result').textContent = `Decision Tree Prediction: ${result.dt_prediction}`;
+                document.getElementById('lr_result').textContent = `Logistic Regression Prediction: ${result.lr_prediction}`;
+                document.getElementById('rf_result').textContent = `Random Forest Prediction: ${result.rf_prediction}`;
+                document.getElementById('knn_result').textContent = `K Nearest Neighbours Prediction: ${result.knn_classifier}`;
+                document.getElementById('overall_probability').textContent = `Overall Probability of Heart Disease based on all models: ${result.heart_disease_probability}`;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>
