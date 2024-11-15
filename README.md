@@ -38,26 +38,24 @@ python app.py
 
 
 ## Example Form Data
-Age: 50
-Sex: Male
-Chest Pain Type: Typical Angina
-Resting Blood Pressure: 120 mm Hg
-Serum Cholesterol: 240 mg/dl
-Fasting Blood Sugar: No
-Resting Electrocardiographic Result: Normal
-Maximum Heart Rate Achieved: 150 bpm
-Exercise Induced Angina: Yes
-Oldpeak (ST Depression): 1.5
-Slope of Peak Exercise ST Segment: Flat
-Number of Major Vessels Colored by Fluoroscopy: 1
-Thalassemia: Normal
+Age: 50 <br/>
+Sex: Male <br/>
+Chest Pain Type: Typical Angina <br/>
+Resting Blood Pressure: 120 mm Hg <br/>
+Serum Cholesterol: 240 mg/dl <br/>
+Fasting Blood Sugar: No <br/>
+Resting Electrocardiographic Result: Normal <br/>
+Maximum Heart Rate Achieved: 150 bpm <br/>
+Exercise Induced Angina: Yes <br/>
+Oldpeak (ST Depression): 1.5 <br/>
+Slope of Peak Exercise ST Segment: Flat <br/>
+Number of Major Vessels Colored by Fluoroscopy: 1 <br/>
+Thalassemia: Normal <br/>
 
 
 ## Contributing
 If you would like to contribute to this project, feel free to submit a pull request. Contributions are welcome for improvements, bug fixes, or new features!
 
-## License
-This project is open-source and available under the Kaggle.
 
 
 
