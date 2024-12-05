@@ -13,7 +13,7 @@ This is a web application for predicting the likelihood of heart disease based o
 - **Frontend**: HTML, CSS, JavaScript (Fetch API).
 - **Backend**: Python, Flask.
 - **Machine Learning Models**: Scikit-learn, joblib.
-- **Other Libraries**: Numpy, Pandas, Matplotlib (for model analysis).
+- **Other Libraries**: Numpy, Pandas, Matplotlib.
 
 ## Prerequisites
 Before running this application, make sure you have the following installed:
