@@ -1,6 +1,6 @@
 # Heart Disease Prediction Web Application
 
-This is a web application for predicting the likelihood of heart disease based on various medical features. The app utilizes machine learning models (SVM, Decision Tree, Logistic Regression, Random Forest, KNN) to provide predictions based on user input.
+This is a web application for predicting the likelihood of heart disease based on various medical features. The app utilizes machine learning models (SVM, Decision Tree, Logistic Regression, Random Forest, KNN) to provide prediction accuracy based on user input.
 
 ## Features
 - Predict heart disease probability using different classifiers.
@@ -36,7 +36,6 @@ python app.py
 
 <b>Once the Flask server is running, open your browser and go to <a href="http://127.0.0.1:5000/" target="_blank">http://127.0.0.1:5000/</a> to access the heart disease prediction app.</b>
 
-
 ## Example Form Data
 Age: 50 <br/>
 Sex: Male <br/>
@@ -62,7 +61,3 @@ Thalassemia: Normal <br/>
 
 ## Contributing
 If you would like to contribute to this project, feel free to submit a pull request. Contributions are welcome for improvements, bug fixes, or new features!
-
-
-
-
