@@ -74,9 +74,9 @@ def predict():
             'rf_prediction': int(rf_prediction),
             'knn_classifier': int(knn_classifier),
             'heart_disease_probability': f"{heart_disease_probability:.2f}%"
-#             'FNN Prediction': int(fnn_pred),
-#             'MLP Prediction': int(mlp_pred),
-#             'DNN Prediction': int(dnn_pred)
+#           'FNN Prediction': int(fnn_pred),
+#           'MLP Prediction': int(mlp_pred),
+#           'DNN Prediction': int(dnn_pred)
         })
     except Exception as e:
         return jsonify({'error': str(e)}), 400  # Send an error response with status 400
