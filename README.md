@@ -51,13 +51,13 @@ Slope of Peak Exercise ST Segment: Flat <br/>
 Number of Major Vessels Colored by Fluoroscopy: 1 <br/>
 Thalassemia: Normal <br/>
 
-## **Screenshots**
+## **Screenshot**
 
-| Prediction Screen                |
+| Prediction Screen               |
 |----------------------------|
 | ![Quiz Screen](HeartDiseasePrediction.pdf) |
 
 ---
 
-## Contributing
+## Contributions
 If you would like to contribute to this project, feel free to submit a pull request. Contributions are welcome for improvements, bug fixes, or new features!
