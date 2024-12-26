@@ -55,9 +55,8 @@ def predict():
         lr_prediction = lr_model.predict(features)[0]
         rf_prediction = rf_model.predict(features)[0]
         knn_classifier = rf_model.predict(features)[0]
-#         fnn_pred = fnn_model.predict(features)[0]
-#         mlp_pred = mlp_model.predict(features)[0]
-#         dnn_pred = dnn_model.predict(features)[0]
+#       fnn_pred = fnn_model.predict(features)[0]
+#       mlp_pred = mlp_model.predict(features)[0]
 
 # Collect individual predictions in a list
         predictions = [
