@@ -15,14 +15,6 @@ This is a web application for predicting the likelihood of heart disease based o
 - **Machine Learning Models**: Scikit-learn, joblib.
 - **Other Libraries**: Numpy, Pandas, Matplotlib.
 
-## Prerequisites
-Before running this application, make sure you have the following installed:
-- Python 3.x
-- Flask
-- Scikit-learn
-- joblib
-- Other dependencies in `requirements.txt`
-
 ## Setup Instructions
 
 ### 1. Clone the repository
