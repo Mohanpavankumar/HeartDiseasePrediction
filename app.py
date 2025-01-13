@@ -31,7 +31,6 @@ def predict():
     try:
         # Get data from the POST request (ensure it's in JSON format)
         data = request.get_json()
-
         # Convert the data into a numpy array suitable for the models
         features = np.array([[
             int(data['age']),               # Age
@@ -48,17 +47,15 @@ def predict():
             int(data['ca']),                # Number of Major Vessels Colored by Fluoroscopy
             int(data['thal'])               # Thalassemia
         ]])
-
         # Make predictions with each model
         svm_prediction = svm_model.predict(features)[0]
         dt_prediction = dt_model.predict(features)[0]
         lr_prediction = lr_model.predict(features)[0]
         rf_prediction = rf_model.predict(features)[0]
         knn_classifier = rf_model.predict(features)[0]
-#       fnn_pred = fnn_model.predict(features)[0]
-#       mlp_pred = mlp_model.predict(features)[0]
-
-# Collect individual predictions in a list
+       # fnn_pred = fnn_model.predict(features)[0]
+       # mlp_pred = mlp_model.predict(features)[0]
+       # Collect individual predictions in a list
         predictions = [
             svm_prediction, dt_prediction, lr_prediction, rf_prediction, knn_classifier
         ]
