@@ -7,7 +7,6 @@ This is a web application for predicting the likelihood of heart disease based o
 - Display individual model predictions and the overall prediction.
 - Interactive web interface built using HTML, CSS, and JavaScript.
 - Backend powered by Flask, running various machine learning models.
-- Fully responsive design.
 
 ## Technologies Used
 - **Frontend**: HTML, CSS, JavaScript (Fetch API).
